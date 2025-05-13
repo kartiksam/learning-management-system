@@ -5,8 +5,9 @@ import Register from "./components/Register/Register";
 import Login from "./components/Login/Login";
 import { Routes, Route } from "react-router-dom";
 import CourseCreate from "./components/Creation/CourseCreate";
-import CourseListStudent from "./components/Listcourse/CourseListStudent";
+// import CourseListStudent from "./components/Listcourse/CourseListStudent";
 import CourseListInstructor from "./components/LIstcourseinstr/CourseListInstructor";
+import CourseListPage from "./components/Listcourse/CourseListPage";
 function App() {
   return (
     <div className="App">
@@ -16,14 +17,15 @@ function App() {
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
         <Route path="/create" element={<CourseCreate />} />
-        <Route
+        {/* <Route
           path="/stucourse"
           element={<CourseListStudent></CourseListStudent>}
-        />
+        /> */}
         <Route
           path="/inscourse"
           element={<CourseListInstructor></CourseListInstructor>}
         />
+        <Route path="/list" element={<CourseListPage></CourseListPage>} />
       </Routes>
     </div>
   );

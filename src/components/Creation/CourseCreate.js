@@ -29,7 +29,7 @@ const CourseCreate = () => {
       .catch((error) => {
         console.log(error);
       });
-    navigate("/inscourse");
+    // navigate("/inscourse");
   };
 
   return (
