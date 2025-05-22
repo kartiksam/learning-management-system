@@ -6,7 +6,7 @@ const StudentCourseCard = ({ course }) => {
       <p>
         <strong>Instructor:</strong> {course.instructorName}
       </p>
-      <button>Start Course</button>
+      <button>Enrolled in Course</button>
     </div>
   );
 };
