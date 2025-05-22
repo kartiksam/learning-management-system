@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useState } from "react";
 import { getToken } from "../../utils/auth";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const CourseCreate = () => {
   const [form, setForm] = useState({
@@ -53,6 +53,7 @@ const CourseCreate = () => {
         />
         <button type="submit">Create</button>
       </form>
+      <Link to="/list">Available Courses</Link>
     </div>
   );
 };

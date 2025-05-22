@@ -1,10 +1,10 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { getToken } from "../../utils/auth";
-
+import { useNavigate } from "react-router-dom";
 function StudentCourses() {
   const [courses, setCourses] = useState([]);
-
+  const navigate = useNavigate();
   useEffect(() => {
     axios
       .get("http://localhost:8080/api/courses/student")
@@ -25,7 +25,11 @@ function StudentCourses() {
           headers: { Authorization: `Bearer ${getToken()}` },
         }
       )
-      .then(() => alert("Enrolled successfully"))
+      .then((response) => {
+        alert("Enrolled successfully");
+
+        navigate("/enrolled-courses");
+      })
       .catch((error) => console.error(error));
   };
 

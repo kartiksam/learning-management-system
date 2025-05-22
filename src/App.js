@@ -5,10 +5,11 @@ import Register from "./components/Register/Register";
 import Login from "./components/Login/Login";
 import { Routes, Route } from "react-router-dom";
 import CourseCreate from "./components/Creation/CourseCreate";
-// import CourseListStudent from "./components/Listcourse/CourseListStudent";
+
 import CourseListInstructor from "./components/LIstcourseinstr/CourseListInstructor";
-import CourseListPage from "./components/Listcourse/CourseListPage";
+
 import CourseListStudent from "./components/Listcourse/CourseListStudent";
+import Mycourses from "./components/Cart/Mycourses";
 function App() {
   return (
     <div className="App">
@@ -27,6 +28,7 @@ function App() {
           element={<CourseListInstructor></CourseListInstructor>}
         />
         <Route path="/list" element={<CourseListStudent></CourseListStudent>} />
+        <Route path="/enrolled-courses" element={<Mycourses></Mycourses>} />
       </Routes>
     </div>
   );
