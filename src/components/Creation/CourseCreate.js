@@ -2,12 +2,14 @@ import axios from "axios";
 import React, { useState } from "react";
 import { getToken } from "../../utils/auth";
 import { Link, useNavigate } from "react-router-dom";
+import "./CourseCreate.css";
 
 const CourseCreate = () => {
   const [form, setForm] = useState({
     title: "",
     description: "",
   });
+
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };

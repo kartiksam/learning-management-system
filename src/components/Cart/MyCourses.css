@@ -1,0 +1,78 @@
+.my-courses-container {
+    max-width: 900px;
+    margin: 50px auto;
+    padding: 30px;
+    background-color: #fdfdfd;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  
+  .my-courses-container h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #222;
+    font-weight: 700;
+    letter-spacing: 1px;
+  }
+  
+  .my-courses-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .my-course-item {
+    background-color: #ffffff;
+    padding: 16px 20px;
+    margin-bottom: 16px;
+    border-radius: 12px;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.07);
+    
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    transition: box-shadow 0.3s ease;
+  }
+  
+  .my-course-item:hover {
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+  }
+  
+  .course-title {
+    flex: 2;
+    font-size: 18px;
+    font-weight: 600;
+    color: #007bff;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  
+  .course-status {
+    flex: 1;
+    color: #555;
+    font-weight: 500;
+    text-align: center;
+  }
+  
+  .course-progress {
+    flex: 1;
+    color: #555;
+    font-weight: 500;
+    text-align: center;
+  }
+  
+  .progress-input {
+    flex: 0 0 80px;
+    padding: 8px 10px;
+    font-size: 14px;
+    border: 1.5px solid #007bff;
+    border-radius: 8px;
+    text-align: center;
+    background-color: #e9f1ff;
+    color: #004a99;
+    cursor: not-allowed;
+  }
+  
