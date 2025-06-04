@@ -1,27 +1,27 @@
 /* StudentCourses.css */
 .course-list-container {
-    padding: 40px 20px;
+    padding: 2rem;
     max-width: 1200px;
-    margin: auto;
+    margin: 0 auto;
   }
   
   .course-list-container h2 {
-    text-align: center;
-    margin-bottom: 30px;
     color: #333;
+    margin-bottom: 2rem;
+    text-align: center;
   }
   
   .course-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 24px;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem;
   }
   
   .course-card {
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    background: white;
+    border-radius: 8px;
+    padding: 1.5rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     transition: transform 0.2s ease;
   }
   
@@ -30,62 +30,142 @@
   }
   
   .course-card h3 {
-    font-size: 20px;
-    margin-bottom: 12px;
-    color: #222;
+    color: #2c3e50;
+    margin-bottom: 1rem;
   }
   
   .course-card p {
-    font-size: 15px;
-    color: #555;
-    margin-bottom: 18px;
+    color: #666;
+    margin-bottom: 1.5rem;
   }
   
-  .enroll-button {
-    background-color: #007bff;
-    color: white;
-    border: none;
-    padding: 10px 16px;
-    font-size: 15px;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+  .upload-section {
+    margin-top: 1rem;
   }
   
-  .enroll-button:hover {
-    background-color: #0056b3;
-  }
-  
-  .instructor-actions {
+  .file-input-container {
     display: flex;
-    gap: 10px;
-    margin-top: 15px;
+    gap: 1rem;
+    margin-bottom: 1rem;
   }
   
-  .edit-button, .delete-button {
-    padding: 8px 16px;
+  .file-input {
+    flex: 1;
+    padding: 0.5rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+  }
+  
+  .type-select {
+    padding: 0.5rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background: white;
+  }
+  
+  .upload-progress {
+    margin: 1rem 0;
+  }
+  
+  .upload-progress progress {
+    width: 100%;
+    height: 8px;
+    border-radius: 4px;
+  }
+  
+  .upload-progress span {
+    display: block;
+    text-align: center;
+    margin-top: 0.5rem;
+    color: #666;
+  }
+  
+  .upload-button,
+  .view-materials-button {
+    width: 100%;
+    padding: 0.75rem;
     border: none;
     border-radius: 4px;
+    background: #3498db;
+    color: white;
     cursor: pointer;
+    transition: background 0.2s ease;
+  }
+  
+  .upload-button:hover,
+  .view-materials-button:hover {
+    background: #2980b9;
+  }
+  
+  .upload-button:disabled {
+    background: #bdc3c7;
+    cursor: not-allowed;
+  }
+  
+  .materials-section {
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid #eee;
+  }
+  
+  .materials-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+  
+  .material-card {
+    background: #f8f9fa;
+    padding: 1rem;
+    border-radius: 4px;
+  }
+  
+  .material-title {
     font-weight: 500;
-    transition: all 0.3s ease;
+    margin-bottom: 0.5rem;
+    color: #2c3e50;
   }
   
-  .edit-button {
-    background-color: #4CAF50;
+  .video-player {
+    width: 100%;
+    border-radius: 4px;
+    margin-top: 0.5rem;
+  }
+  
+  .download-link {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    background: #2ecc71;
     color: white;
+    text-decoration: none;
+    border-radius: 4px;
+    margin-top: 0.5rem;
+    transition: background 0.2s ease;
   }
   
-  .edit-button:hover {
-    background-color: #45a049;
+  .download-link:hover {
+    background: #27ae60;
   }
   
-  .delete-button {
-    background-color: #f44336;
-    color: white;
+  .loading {
+    text-align: center;
+    padding: 2rem;
+    color: #666;
   }
   
-  .delete-button:hover {
-    background-color: #da190b;
+  .error-message {
+    text-align: center;
+    padding: 1rem;
+    background: #fee;
+    color: #e74c3c;
+    border-radius: 4px;
+    margin: 1rem 0;
+  }
+  
+  .no-materials {
+    text-align: center;
+    color: #666;
+    font-style: italic;
   }
   
