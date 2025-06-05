@@ -105,7 +105,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { getToken, getUserRole } from "../../utils/auth";
 import "./CourseListStudent.css";
-
+import { useNavigate } from "react-router-dom";
 function StudentCourses() {
   const [courses, setCourses] = useState([]);
   const [selectedCourseId, setSelectedCourseId] = useState(null); // For upload/view
@@ -114,6 +114,7 @@ function StudentCourses() {
   const [materials, setMaterials] = useState([]);
   const role = getUserRole();
 
+  const navigate = useNavigate();
   useEffect(() => {
     const token = getToken();
     const endpoint =
@@ -128,6 +129,23 @@ function StudentCourses() {
       .then((res) => setCourses(res.data))
       .catch((err) => console.log(err));
   }, [role]);
+
+  const handleEnroll = (courseId) => {
+    axios
+      .post(
+        `http://localhost:8080/api/enrollments/enroll/${courseId}`,
+        {},
+        {
+          headers: { Authorization: `Bearer ${getToken()}` },
+        }
+      )
+      .then((response) => {
+        alert("Enrolled successfully");
+
+        navigate("/enrolled-courses");
+      })
+      .catch((error) => console.error(error));
+  };
 
   const handleUpload = async (courseId) => {
     const token = getToken();
@@ -192,9 +210,18 @@ function StudentCourses() {
                 <button onClick={() => handleUpload(course.id)}>Upload</button>
               </>
             ) : (
-              <button onClick={() => handleViewMaterials(course.id)}>
-                View Materials
-              </button>
+              <>
+                <button onClick={() => handleViewMaterials(course.id)}>
+                  View Materials
+                </button>
+
+                <button
+                  onClick={() => handleEnroll(course.id)}
+                  className="enroll-button"
+                >
+                  Enroll Now
+                </button>
+              </>
             )}
 
             {/* Show materials list only for selected course */}
