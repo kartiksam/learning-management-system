@@ -22,7 +22,7 @@ const UploadMaterial = () => {
         <option value="pdf">PDF</option>
         <option value="image">Image</option>
       </select>
-      <button onClick={handleUpload}>Upload</button>
+      <button onClick={() => handleUpload(courseId)}>Upload</button>
     </div>
   );
 };

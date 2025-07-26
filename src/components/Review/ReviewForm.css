@@ -1,0 +1,244 @@
+/* ReviewForm.css */
+.review-form {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 16px;
+  padding: 24px;
+  width: 100%;
+  max-width: 500px;
+  margin: 20px auto;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  animation: slideInUp 0.6s ease-out;
+}
+
+.review-form h3 {
+  color: white;
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 20px;
+  text-align: center;
+  background: linear-gradient(45deg, #ff6b6b, #feca57);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.review-form textarea {
+  width: 100%;
+  resize: vertical;
+  min-height: 120px;
+  padding: 16px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 12px;
+  color: white;
+  font-size: 1rem;
+  font-family: inherit;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+  margin-bottom: 16px;
+}
+
+.review-form textarea::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.review-form textarea:focus {
+  outline: none;
+  border-color: #ff6b6b;
+  background: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 0 0 3px rgba(255, 107, 107, 0.1);
+}
+
+.rating-section {
+  margin-bottom: 20px;
+}
+
+.rating-label {
+  display: block;
+  color: white;
+  font-weight: 600;
+  margin-bottom: 8px;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.rating-input {
+  width: 100%;
+  padding: 12px 16px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 12px;
+  color: white;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+
+.rating-input:focus {
+  outline: none;
+  border-color: #ff6b6b;
+  background: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 0 0 3px rgba(255, 107, 107, 0.1);
+}
+
+.rating-input option {
+  background: #667eea;
+  color: white;
+}
+
+.star-rating {
+  display: flex;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.star {
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: rgba(255, 255, 255, 0.3);
+  transition: all 0.2s ease;
+}
+
+.star:hover,
+.star.active {
+  color: #feca57;
+  transform: scale(1.1);
+}
+
+.review-form button {
+  width: 100%;
+  padding: 16px;
+  background: linear-gradient(45deg, #ff6b6b, #feca57);
+  border: none;
+  border-radius: 12px;
+  color: white;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3);
+}
+
+.review-form button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(255, 107, 107, 0.4);
+}
+
+.review-form button:active {
+  transform: translateY(0);
+}
+
+.review-form button:disabled {
+  background: rgba(255, 255, 255, 0.2);
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.button-icon {
+  font-size: 1.2rem;
+  transition: transform 0.3s ease;
+}
+
+.review-form button:hover .button-icon {
+  transform: translateX(4px);
+}
+
+/* Success message */
+.success-message {
+  background: rgba(46, 204, 113, 0.2);
+  border: 1px solid rgba(46, 204, 113, 0.3);
+  color: #2ecc71;
+  padding: 12px 16px;
+  border-radius: 8px;
+  margin-bottom: 16px;
+  text-align: center;
+  backdrop-filter: blur(10px);
+}
+
+/* Error message */
+.error-message {
+  background: rgba(231, 76, 60, 0.2);
+  border: 1px solid rgba(231, 76, 60, 0.3);
+  color: #e74c3c;
+  padding: 12px 16px;
+  border-radius: 8px;
+  margin-bottom: 16px;
+  text-align: center;
+  backdrop-filter: blur(10px);
+}
+
+/* Animations */
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .review-form {
+    padding: 20px;
+    margin: 15px;
+  }
+  
+  .review-form h3 {
+    font-size: 1.3rem;
+  }
+  
+  .review-form textarea {
+    min-height: 100px;
+    padding: 14px;
+  }
+  
+  .rating-input {
+    padding: 10px 14px;
+  }
+  
+  .star {
+    font-size: 1.3rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .review-form {
+    padding: 16px;
+  }
+  
+  .review-form h3 {
+    font-size: 1.2rem;
+  }
+  
+  .review-form textarea {
+    min-height: 80px;
+    padding: 12px;
+    font-size: 0.9rem;
+  }
+  
+  .rating-input {
+    padding: 8px 12px;
+    font-size: 0.9rem;
+  }
+  
+  .star {
+    font-size: 1.2rem;
+  }
+  
+  .review-form button {
+    padding: 14px;
+    font-size: 1rem;
+  }
+}
+  

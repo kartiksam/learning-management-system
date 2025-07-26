@@ -30,44 +30,86 @@ const Register = () => {
 
   return (
     <div className="register-container">
-      <h2>Register</h2>
-      <form onSubmit={handleSubmit}>
-        <div className="form-group">
-          <label htmlFor="username">Username</label>
-          <input
-            type="text"
-            name="username"
-            placeholder="Username"
-            value={formData.name}
-            onChange={handleChange}
-            required
-          />
+      <div className="register-background">
+        <div className="floating-shapes">
+          <div className="shape shape-1"></div>
+          <div className="shape shape-2"></div>
+          <div className="shape shape-3"></div>
         </div>
-        <div className="form-group">
-          <label htmlFor="password">Password</label>
-          <input
-            type="text"
-            name="password"
-            placeholder="Password"
-            value={formData.password}
-            onChange={handleChange}
-            required
-          />
+      </div>
+
+      <div className="register-card">
+        <div className="register-header">
+          <div className="logo-icon">🎓</div>
+          <h2>Create Your Account</h2>
+          <p>Join Smart Learn and start your learning journey today</p>
         </div>
-        <div className="form-group">
-          <label htmlFor="role">Role</label>
-          <select name="role" value={formData.role} onChange={handleChange}>
-            <option value="STUDENT">Student</option>
-            <option value="INSTRUCTOR">Instructor</option>
-            <option value="ADMIN">Admin</option>
-          </select>
+
+        <form onSubmit={handleSubmit} className="register-form">
+          <div className="form-group">
+            <label htmlFor="username">Username</label>
+            <div className="input-wrapper">
+              <span className="input-icon">👤</span>
+              <input
+                type="text"
+                id="username"
+                name="username"
+                placeholder="Enter your username"
+                value={formData.username}
+                onChange={handleChange}
+                required
+              />
+            </div>
+          </div>
+
+          <div className="form-group">
+            <label htmlFor="password">Password</label>
+            <div className="input-wrapper">
+              <span className="input-icon">🔒</span>
+              <input
+                type="password"
+                id="password"
+                name="password"
+                placeholder="Enter your password"
+                value={formData.password}
+                onChange={handleChange}
+                required
+              />
+            </div>
+          </div>
+
+          <div className="form-group">
+            <label htmlFor="role">Role</label>
+            <div className="input-wrapper">
+              <span className="input-icon">🎯</span>
+              <select
+                id="role"
+                name="role"
+                value={formData.role}
+                onChange={handleChange}
+              >
+                <option value="STUDENT">Student</option>
+                <option value="INSTRUCTOR">Instructor</option>
+                <option value="ADMIN">Admin</option>
+              </select>
+            </div>
+          </div>
+
+          <button type="submit" className="register-button">
+            <span>Create Account</span>
+            <span className="button-icon">→</span>
+          </button>
+        </form>
+
+        <div className="register-footer">
+          <p>
+            Already have an account?
+            <Link to="/login" className="login-link">
+              Sign In
+            </Link>
+          </p>
         </div>
-        <button type="submit">Register</button>
-        <p>
-          Already have an account?
-          <Link to="/login">Login</Link>
-        </p>
-      </form>
+      </div>
     </div>
   );
 };
