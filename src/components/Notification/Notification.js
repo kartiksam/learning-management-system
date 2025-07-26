@@ -1,17 +1,22 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import "./Notifications.css";
+import "./Notification.css";
 
 const Notifications = () => {
   const [notifications, setNotifications] = useState([]);
-
   useEffect(() => {
     const fetchNotifications = async () => {
-      const token = localStorage.getItem("token");
-      const res = await axios.get("/api/notifications", {
-        headers: { Authorization: `Bearer ${token}` },
-      });
-      setNotifications(res.data);
+      try {
+        const token = localStorage.getItem("token");
+        const res = await axios.get("http://localhost:8080/api/notification", {
+          headers: { Authorization: `Bearer ${token}` },
+        });
+
+        setNotifications(res.data || []); // Safe fallback
+      } catch (error) {
+        console.error("Error fetching notifications:", error);
+        setNotifications([]); // In case of error, keep it safe
+      }
     };
     fetchNotifications();
   }, []);

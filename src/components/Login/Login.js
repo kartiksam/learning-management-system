@@ -23,7 +23,8 @@ const Login = () => {
       .then((response) => {
         console.log(response);
         localStorage.setItem("token", response.data.token);
-        navigate("/create");
+        navigate("/layout");
+        // navigate("/create");
       })
       .catch((error) => {
         console.log(error);

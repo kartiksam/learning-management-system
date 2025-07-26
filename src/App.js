@@ -10,6 +10,8 @@ import CourseListInstructor from "./components/LIstcourseinstr/CourseListInstruc
 
 import CourseListStudent from "./components/Listcourse/CourseListStudent";
 import Mycourses from "./components/Cart/Mycourses";
+import Dashboard from "./components/Dashboard/dashboard";
+import MainLayout from "./pages/MainLayout";
 function App() {
   return (
     <div className="App">
@@ -19,6 +21,18 @@ function App() {
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
         <Route path="/create" element={<CourseCreate />} />
+        {/* <Route
+          // element={
+            // <PrivateRoute>
+              // <MainLayout />
+            // </PrivateRoute>
+
+          // }
+          path="/create"
+          <MainLayout />
+        /> */}
+        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/layout" element={<MainLayout />} />
         {/* <Route
           path="/stucourse"
           element={<CourseListStudent></CourseListStudent>}

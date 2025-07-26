@@ -10,7 +10,7 @@ const ReviewForm = ({ courseId }) => {
     e.preventDefault();
     const token = localStorage.getItem("token");
     await axios.post(
-      `/api/reviews/${courseId}`,
+      `http://localhost:8080/api/reviews/${courseId}`,
       { review, rating },
       {
         headers: { Authorization: `Bearer ${token}` },
