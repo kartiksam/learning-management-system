@@ -16,7 +16,7 @@ const MainLayout = () => {
       <nav className="navbar">
         <div className="navbar-left">
           <Link to="/dashboard">Dashboard</Link>
-          <Link to="/courses">My Courses</Link>
+          <Link to="/list">My Courses</Link>
         </div>
         <button className="logout-btn" onClick={handleLogout}>
           Logout

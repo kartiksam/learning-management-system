@@ -1,0 +1,33 @@
+.admin-dashboard {
+    padding: 2rem;
+    background-color: #f4f4f4;
+    min-height: 100vh;
+  }
+  
+  .admin-dashboard h1 {
+    color: #222;
+    margin-bottom: 2rem;
+  }
+  
+  .admin-options {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  }
+  
+  .admin-options a {
+    background: white;
+    padding: 1.5rem;
+    text-align: center;
+    text-decoration: none;
+    color: #007bff;
+    font-weight: bold;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    transition: all 0.2s ease-in-out;
+  }
+  
+  .admin-options a:hover {
+    background-color: #e9ecef;
+  }
+  

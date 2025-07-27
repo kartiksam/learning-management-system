@@ -12,6 +12,7 @@ import CourseListStudent from "./components/Listcourse/CourseListStudent";
 import Mycourses from "./components/Cart/Mycourses";
 import Dashboard from "./components/Dashboard/dashboard";
 import MainLayout from "./pages/MainLayout";
+import AdminDashboard from "./components/Admin/AdminDashboard";
 function App() {
   return (
     <div className="App">
@@ -43,6 +44,7 @@ function App() {
         />
         <Route path="/list" element={<CourseListStudent></CourseListStudent>} />
         <Route path="/enrolled-courses" element={<Mycourses></Mycourses>} />
+        <Route path="/admin" element={<AdminDashboard />} />
       </Routes>
     </div>
   );
