@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { getToken } from "../../utils/auth";
+import "./AdminPage.css";
 
 const ManageCourses = () => {
   const [courses, setCourses] = useState([]);
@@ -30,7 +31,7 @@ const ManageCourses = () => {
   };
 
   return (
-    <div>
+    <div className="admin-page-container">
       <h2>Manage Courses</h2>
       <table>
         <thead>

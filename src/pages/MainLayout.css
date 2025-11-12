@@ -1,11 +1,16 @@
 /* MainLayout.css */
 
 .navbar {
-    background-color: #2c3e50;
+    background-color: rgba(44, 62, 80, 0.9);
+    backdrop-filter: blur(10px);
     padding: 1rem 2rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   }
   
   .navbar-left {
@@ -39,9 +44,4 @@
     background-color: #c0392b;
   }
   
-  main {
-    padding: 2rem;
-    background-color: #f8f9fa;
-    min-height: 90vh;
-  }
   

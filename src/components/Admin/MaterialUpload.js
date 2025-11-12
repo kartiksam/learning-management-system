@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { getToken } from "../../utils/auth";
+import "./AdminPage.css";
 
 const MaterialUploads = () => {
   const [materials, setMaterials] = useState([]);
@@ -14,24 +15,26 @@ const MaterialUploads = () => {
   }, []);
 
   return (
-    <div>
+    <div className="admin-page-container">
       <h2>All Uploaded Materials</h2>
       <table>
         <thead>
           <tr>
-            <th>Course</th>
-            <th>Type</th>
-            <th>Filename</th>
-            <th>Uploader</th>
+            <th>ID</th>
+            <th>File Name</th>
+            <th>File Type</th>
+            <th>File Path</th>
+            <th>Created At</th>
           </tr>
         </thead>
         <tbody>
           {materials.map((m) => (
             <tr key={m.id}>
-              <td>{m.courseTitle}</td>
-              <td>{m.type}</td>
-              <td>{m.filename}</td>
-              <td>{m.uploaderName}</td>
+              <td>{m.id}</td>
+              <td>{m.fileName}</td>
+              <td>{m.fileType}</td>
+              <td>{m.filePath}</td>
+              <td>{m.createdAt || "N/A"}</td>
             </tr>
           ))}
         </tbody>

@@ -1,0 +1,126 @@
+/* AdminPage.css - Shared styles for all admin pages */
+.admin-page-container {
+  min-height: 100vh;
+  height: 100vh;
+  padding: 2rem;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  position: relative;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.admin-page-container h2 {
+  color: white;
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+  text-align: center;
+  background: linear-gradient(45deg, #ff6b6b, #feca57);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.admin-page-container table {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+.admin-page-container thead {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.admin-page-container th {
+  padding: 1rem;
+  text-align: left;
+  color: white;
+  font-weight: 600;
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.admin-page-container td {
+  padding: 1rem;
+  color: rgba(255, 255, 255, 0.9);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.admin-page-container tbody tr {
+  transition: all 0.3s ease;
+}
+
+.admin-page-container tbody tr:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.admin-page-container button {
+  padding: 8px 16px;
+  margin: 0 4px;
+  background: linear-gradient(45deg, #ff6b6b, #feca57);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3);
+}
+
+.admin-page-container button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(255, 107, 107, 0.4);
+}
+
+.admin-page-container button:active {
+  transform: translateY(0);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .admin-page-container {
+    padding: 1rem;
+  }
+  
+  .admin-page-container h2 {
+    font-size: 2rem;
+  }
+  
+  .admin-page-container table {
+    font-size: 0.9rem;
+  }
+  
+  .admin-page-container th,
+  .admin-page-container td {
+    padding: 0.75rem;
+  }
+  
+  .admin-page-container button {
+    padding: 6px 12px;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .admin-page-container h2 {
+    font-size: 1.8rem;
+  }
+  
+  .admin-page-container table {
+    font-size: 0.8rem;
+  }
+  
+  .admin-page-container th,
+  .admin-page-container td {
+    padding: 0.5rem;
+  }
+}
+

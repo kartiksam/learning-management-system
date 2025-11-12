@@ -7,10 +7,12 @@
 
 .home-container {
   min-height: 100vh;
+  height: 100vh;
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   color: white;
   overflow-x: hidden;
+  overflow-y: auto;
 }
 
 /* Hero Section */

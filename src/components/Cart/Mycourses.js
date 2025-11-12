@@ -30,17 +30,11 @@ const Mycourses = () => {
       <ul className="my-courses-list">
         {enrollments.map((enrollment) => (
           <li key={enrollment.id} className="my-course-item">
-            <span className="course-title">{enrollment.course.title}</span>
-            <span className="course-status">Status: {enrollment.status}</span>
+            <span className="course-title"> {enrollment.course.title} </span>
+            <span className="course-status"> Status: {enrollment.status} </span>
             <span className="course-progress">
-              Progress: {enrollment.progress}%
+              Progress : {enrollment.progress} %
             </span>
-            <input
-              type="number"
-              className="progress-input"
-              value={enrollment.progress}
-              readOnly
-            />
           </li>
         ))}
       </ul>

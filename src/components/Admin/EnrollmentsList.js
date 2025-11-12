@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { getToken } from "../../utils/auth";
+import "./AdminPage.css";
 
 const EnrollmentsList = () => {
   const [enrollments, setEnrollments] = useState([]);
@@ -14,7 +15,7 @@ const EnrollmentsList = () => {
   }, []);
 
   return (
-    <div>
+    <div className="admin-page-container">
       <h2>All Enrollments</h2>
       <table>
         <thead>

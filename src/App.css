@@ -2,6 +2,7 @@
 .App {
   text-align: center;
   min-height: 100vh;
+  height: 100vh;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   position: relative;
