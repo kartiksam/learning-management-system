@@ -18,18 +18,37 @@ const ManageCourses = () => {
     fetchCourses();
   }, []);
 
-  const handleStatusChange = (id, status) => {
+  const handleApproveChange = (id) => {
     axios
       .put(
-        `/api/admin/courses/${id}/status`,
-        { status },
+        `http://localhost:8080/admin/courses/${id}/approve`,
+        {},
         {
           headers: { Authorization: `Bearer ${getToken()}` },
         }
       )
-      .then(fetchCourses);
+      .then(fetchCourses)
+      .catch((err) => {
+        console.error("Error updating course status:", err);
+        alert("Failed to update course status. Please try again.");
+      });
   };
 
+  const handleRejectChange = (id) => {
+    axios
+      .put(
+        `http://localhost:8080/admin/courses/${id}/reject`,
+        {},
+        {
+          headers: { Authorization: `Bearer ${getToken()}` },
+        }
+      )
+      .then(fetchCourses)
+      .catch((err) => {
+        console.error("Error updating course status:", err);
+        alert("Failed to update course status. Please try again.");
+      });
+  };
   return (
     <div className="admin-page-container">
       <h2>Manage Courses</h2>
@@ -49,14 +68,10 @@ const ManageCourses = () => {
               <td>{course.title}</td>
               <td>{course.status}</td>
               <td>
-                <button
-                  onClick={() => handleStatusChange(course.id, "APPROVED")}
-                >
+                <button onClick={() => handleApproveChange(course.id)}>
                   Approve
                 </button>
-                <button
-                  onClick={() => handleStatusChange(course.id, "REJECTED")}
-                >
+                <button onClick={() => handleRejectChange(course.id)}>
                   Reject
                 </button>
               </td>
