@@ -45,6 +45,20 @@ function StudentCourses() {
       .catch((error) => console.error(error));
   };
 
+  const purchaseCourse = async (courseId) => {
+    try {
+      const token = localStorage.getItem("accessToken");
+      const res = await axios.post(
+        `http://localhost:8080/api/payment/create-checkout-session/${courseId}`,
+        {},
+        { headers: { Authorization: `Bearer ${token}` } }
+      );
+      window.location.href = res.data.url; // redirect to Stripe Checkout
+    } catch (err) {
+      console.error("Checkout error", err);
+    }
+  };
+
   const handleUpload = async (courseId) => {
     const token = getToken();
     const formData = new FormData();
@@ -139,6 +153,14 @@ function StudentCourses() {
                   className="enroll-button"
                 >
                   <span>Enroll Now</span>
+                  <span>🎓</span>
+                </button>
+
+                <button
+                  onClick={() => purchaseCourse(course.id)}
+                  className="enroll-button"
+                >
+                  <span>Purchase Course</span>
                   <span>🎓</span>
                 </button>
               </>
