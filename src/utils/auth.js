@@ -30,7 +30,7 @@ export const getUserRole = () => {
 export const isAuthenticated = () => {
   const token = localStorage.getItem("token");
   if (!token) return false;
-  
+
   try {
     const decoded = jwtDecode(token);
     // Check if token is expired

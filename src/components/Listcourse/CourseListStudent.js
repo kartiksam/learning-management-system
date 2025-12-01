@@ -47,15 +47,64 @@ function StudentCourses() {
 
   const purchaseCourse = async (courseId) => {
     try {
-      const token = localStorage.getItem("accessToken");
+      const token = getToken();
+
+      // Validate token exists
+      if (!token) {
+        alert("Please login to purchase a course");
+        navigate("/login");
+        return;
+      }
+
+      console.log("Creating checkout session for course ID:", courseId);
+      console.log("Token exists:", !!token);
+
       const res = await axios.post(
         `http://localhost:8080/api/payment/create-checkout-session/${courseId}`,
         {},
         { headers: { Authorization: `Bearer ${token}` } }
       );
-      window.location.href = res.data.url; // redirect to Stripe Checkout
+
+      // Validate response has URL
+      if (res.data && res.data.url) {
+        window.location.href = res.data.url; // redirect to Stripe Checkout
+      } else {
+        console.error("Invalid response from server:", res.data);
+        alert("Failed to create checkout session. Please try again.");
+      }
     } catch (err) {
       console.error("Checkout error", err);
+
+      // Provide user-friendly error messages
+      if (err.response) {
+        // Server responded with error status
+        const status = err.response.status;
+        const message =
+          err.response.data?.message ||
+          err.response.data?.error ||
+          "Unknown error";
+
+        if (status === 401) {
+          alert("Session expired. Please login again.");
+          navigate("/login");
+        } else if (status === 404) {
+          alert("Course not found. Please refresh the page.");
+        } else if (status === 400) {
+          alert(`Invalid request: ${message}`);
+        } else if (status === 500) {
+          alert("Server error. Please try again later.");
+        } else {
+          alert(`Error: ${message}`);
+        }
+      } else if (err.request) {
+        // Request was made but no response received
+        alert(
+          "Unable to connect to server. Please check your internet connection."
+        );
+      } else {
+        // Something else happened
+        alert("An unexpected error occurred. Please try again.");
+      }
     }
   };
 
