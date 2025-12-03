@@ -8,6 +8,7 @@ const CourseCreate = () => {
   const [form, setForm] = useState({
     title: "",
     description: "",
+    price: "",
   });
 
   const handleChange = (e) => {
@@ -59,6 +60,22 @@ const CourseCreate = () => {
             required
           />
         </div>
+
+        <div className="form-group">
+          <label htmlFor="price">Price ($)</label>
+          <input
+            id="price"
+            name="price"
+            type="number"
+            min="0"
+            step="0.01"
+            value={form.price}
+            placeholder="Enter course price"
+            onChange={handleChange}
+            required
+          />
+        </div>
+
         <button type="submit" className="create-button">
           <span>Create Course</span>
           <span className="button-icon">→</span>
