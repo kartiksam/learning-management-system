@@ -18,6 +18,7 @@ import ProgressTracker from "./components/Admin/ProgressTracker";
 import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
 import RoleBasedRoute from "./components/PrivateRoute/RoleBasedRoute";
 import PublicRoute from "./components/PrivateRoute/PublicRoute";
+import VerifyEmail from "./pages/VerifyEmail";
 
 function App() {
   return (
@@ -41,7 +42,14 @@ function App() {
             </PublicRoute>
           }
         />
-        
+        <Route
+          path="/verify-email"
+          element={
+            <PublicRoute>
+              <VerifyEmail />
+            </PublicRoute>
+          }
+        />
         {/* Protected routes - require authentication */}
         <Route
           path="/dashboard"
@@ -75,7 +83,7 @@ function App() {
             </PrivateRoute>
           }
         />
-        
+
         {/* Instructor-only routes */}
         <Route
           path="/create"
@@ -93,7 +101,7 @@ function App() {
             </RoleBasedRoute>
           }
         />
-        
+
         {/* Admin-only routes */}
         <Route
           path="/admin"
@@ -143,7 +151,7 @@ function App() {
             </RoleBasedRoute>
           }
         />
-        
+
         {/* Catch-all route - redirect any undefined routes to login */}
         <Route
           path="*"

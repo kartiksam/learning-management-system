@@ -1,0 +1,46 @@
+.verify-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 80px;
+}
+
+.verify-card {
+  width: 400px;
+  padding: 30px;
+  border-radius: 12px;
+  background: white;
+  box-shadow: 0 0 15px rgba(0,0,0,0.1);
+  text-align: center;
+}
+
+.otp-input {
+  width: 100%;
+  padding: 12px;
+  margin-top: 20px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+.verify-btn {
+  margin-top: 20px;
+  width: 100%;
+  padding: 12px;
+  background: #007bff;
+  border: none;
+  color: white;
+  font-weight: bold;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.resend-section {
+  margin-top: 15px;
+}
+
+.resend-btn {
+  background: transparent;
+  border: none;
+  color: #007bff;
+  cursor: pointer;
+  font-size: 15px;
+}
