@@ -63,6 +63,95 @@ onChange={(e) => setFile(e.target.files[0])}
 - **Arrow functions**: `() => {}` - shorter function syntax
 - **Event object**: `(e)` gives access to event details
 
+useEffect(() => {
+// side effect code
+}, [dependencies]);
+👉 useEffect runs based on changes in dependencies.
+
+🟢 Case 1: Empty dependency array []
+js
+Copy code
+useEffect(() => {
+fetchCourses();
+}, []);
+What this means 👇
+Runs ONLY ONCE
+
+Runs when the component loads (mounts)
+
+Just like componentDidMount in class components
+
+When to use:
+✔ API call on page load
+✔ Token validation
+✔ Initial data fetch
+
+🧠 Example (SmartLearn):
+
+js
+Copy code
+useEffect(() => {
+validateToken();
+}, []);
+➡️ Token checked once when page opens
+
+🟡 Case 2: One dependency [token]
+js
+Copy code
+useEffect(() => {
+fetchCourses();
+}, [token]);
+What this means:
+Runs on first render
+
+Runs again whenever token changes
+
+🧠 Flow:
+
+css
+Copy code
+Page loads → effect runs
+Token changes → effect runs again
+Used when:
+✔ Data depends on token
+✔ User logs in / logs out
+
+🔵 Case 3: Two dependencies [token, userId] (THIS IS WHAT YOU ASKED)
+js
+Copy code
+useEffect(() => {
+fetchCourses();
+}, [token, userId]);
+What this means 👇
+Runs on first render
+
+Runs again if ANY ONE changes
+
+token ❗
+
+userId ❗
+
+❗ Not both together — even one change triggers it.
+
+Example timeline:
+lua
+Copy code
+Initial load → effect runs
+token changes → effect runs
+userId changes → effect runs
+🔴 Case 4: No dependency array ❌
+js
+Copy code
+useEffect(() => {
+fetchCourses();
+});
+What happens:
+Runs on EVERY re-render
+
+Dangerous → infinite loop risk ⚠️
+
+❌ Almost NEVER use this
+
 ### 5. **Lists and Keys**
 
 ```javascript
