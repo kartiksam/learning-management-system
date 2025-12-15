@@ -1,6 +1,10 @@
 import React from "react";
 import { Navigate } from "react-router-dom";
-import { isAuthenticated, getUserRole } from "../../utils/auth";
+import {
+  isAuthenticated,
+  getUserRole,
+  getDefaultRouteForRole,
+} from "../../utils/auth";
 
 const RoleBasedRoute = ({ children, allowedRoles = [] }) => {
   const authenticated = isAuthenticated();
@@ -12,13 +16,13 @@ const RoleBasedRoute = ({ children, allowedRoles = [] }) => {
   }
 
   if (allowedRoles.length > 0 && !allowedRoles.includes(userRole)) {
-    // Redirect to dashboard or home if user doesn't have required role
-    return <Navigate to="/dashboard" replace />;
+    // Redirect to the user's role-based home if they don't have required role
+    const target = getDefaultRouteForRole();
+    return <Navigate to={target} replace />;
   }
 
   return children;
 };
 
 export default RoleBasedRoute;
-
 

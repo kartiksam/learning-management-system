@@ -27,6 +27,22 @@ export const getUserRole = () => {
   }
 };
 
+/**
+ * Get the default route path for the current authenticated user's role.
+ * - ADMIN      -> /admin
+ * - INSTRUCTOR -> /inscourse
+ * - STUDENT or unknown -> /list
+ */
+export const getDefaultRouteForRole = () => {
+  const role = getUserRole();
+
+  if (role === "ADMIN") return "/admin";
+  if (role === "INSTRUCTOR") return "/inscourse";
+
+  // Default for STUDENT or when role is missing
+  return "/list";
+};
+
 export const isAuthenticated = () => {
   const token = localStorage.getItem("token");
   if (!token) return false;

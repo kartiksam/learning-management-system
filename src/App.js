@@ -50,117 +50,91 @@ function App() {
             </PublicRoute>
           }
         />
-        {/* Protected routes - require authentication */}
+
+        {/* All authenticated pages share the main layout (with profile + logout) */}
         <Route
-          path="/dashboard"
-          element={
-            <PrivateRoute>
-              <Dashboard />
-            </PrivateRoute>
-          }
-        />
-        <Route
-          path="/layout"
           element={
             <PrivateRoute>
               <MainLayout />
             </PrivateRoute>
           }
-        />
-        <Route
-          path="/list"
-          element={
-            <PrivateRoute>
-              <CourseListStudent />
-            </PrivateRoute>
-          }
-        />
-        <Route
-          path="/enrolled-courses"
-          element={
-            <PrivateRoute>
-              <Mycourses />
-            </PrivateRoute>
-          }
-        />
+        >
+          {/* General authenticated routes */}
+          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/list" element={<CourseListStudent />} />
+          <Route path="/enrolled-courses" element={<Mycourses />} />
 
-        {/* Instructor-only routes */}
-        <Route
-          path="/create"
-          element={
-            <RoleBasedRoute allowedRoles={["INSTRUCTOR", "ADMIN"]}>
-              <CourseCreate />
-            </RoleBasedRoute>
-          }
-        />
-        <Route
-          path="/inscourse"
-          element={
-            <RoleBasedRoute allowedRoles={["INSTRUCTOR", "ADMIN"]}>
-              <CourseListInstructor />
-            </RoleBasedRoute>
-          }
-        />
+          {/* Instructor-only routes */}
+          <Route
+            path="/create"
+            element={
+              <RoleBasedRoute allowedRoles={["INSTRUCTOR", "ADMIN"]}>
+                <CourseCreate />
+              </RoleBasedRoute>
+            }
+          />
+          <Route
+            path="/inscourse"
+            element={
+              <RoleBasedRoute allowedRoles={["INSTRUCTOR", "ADMIN"]}>
+                <CourseListInstructor />
+              </RoleBasedRoute>
+            }
+          />
 
-        {/* Admin-only routes */}
-        <Route
-          path="/admin"
-          element={
-            <RoleBasedRoute allowedRoles={["ADMIN"]}>
-              <AdminDashboard />
-            </RoleBasedRoute>
-          }
-        />
-        <Route
-          path="/admin/users"
-          element={
-            <RoleBasedRoute allowedRoles={["ADMIN"]}>
-              <ManageUsers />
-            </RoleBasedRoute>
-          }
-        />
-        <Route
-          path="/admin/courses"
-          element={
-            <RoleBasedRoute allowedRoles={["ADMIN"]}>
-              <ManageCourses />
-            </RoleBasedRoute>
-          }
-        />
-        <Route
-          path="/admin/enrollments"
-          element={
-            <RoleBasedRoute allowedRoles={["ADMIN"]}>
-              <EnrollmentsList />
-            </RoleBasedRoute>
-          }
-        />
-        <Route
-          path="/admin/materials"
-          element={
-            <RoleBasedRoute allowedRoles={["ADMIN"]}>
-              <MaterialUpload />
-            </RoleBasedRoute>
-          }
-        />
-        <Route
-          path="/admin/progress"
-          element={
-            <RoleBasedRoute allowedRoles={["ADMIN"]}>
-              <ProgressTracker />
-            </RoleBasedRoute>
-          }
-        />
+          {/* Admin-only routes */}
+          <Route
+            path="/admin"
+            element={
+              <RoleBasedRoute allowedRoles={["ADMIN"]}>
+                <AdminDashboard />
+              </RoleBasedRoute>
+            }
+          />
+          <Route
+            path="/admin/users"
+            element={
+              <RoleBasedRoute allowedRoles={["ADMIN"]}>
+                <ManageUsers />
+              </RoleBasedRoute>
+            }
+          />
+          <Route
+            path="/admin/courses"
+            element={
+              <RoleBasedRoute allowedRoles={["ADMIN"]}>
+                <ManageCourses />
+              </RoleBasedRoute>
+            }
+          />
+          <Route
+            path="/admin/enrollments"
+            element={
+              <RoleBasedRoute allowedRoles={["ADMIN"]}>
+                <EnrollmentsList />
+              </RoleBasedRoute>
+            }
+          />
+          <Route
+            path="/admin/materials"
+            element={
+              <RoleBasedRoute allowedRoles={["ADMIN"]}>
+                <MaterialUpload />
+              </RoleBasedRoute>
+            }
+          />
+          <Route
+            path="/admin/progress"
+            element={
+              <RoleBasedRoute allowedRoles={["ADMIN"]}>
+                <ProgressTracker />
+              </RoleBasedRoute>
+            }
+          />
+        </Route>
 
-        {/* Catch-all route - redirect any undefined routes to login */}
-        <Route
-          path="*"
-          element={
-            <PrivateRoute>
-              <Navigate to="/dashboard" replace />
-            </PrivateRoute>
-          }
-        />
+        {/* Catch-all route - redirect any undefined routes to dashboard (inside layout) */}
+        <Route path="*" element={<Navigate to="/dashboard" replace />} />
       </Routes>
     </div>
   );

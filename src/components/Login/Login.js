@@ -105,6 +105,7 @@ import axios from "axios";
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "./Login.css";
+import { getDefaultRouteForRole } from "../../utils/auth";
 
 const Login = () => {
   const [data, setData] = useState({
@@ -131,7 +132,9 @@ const Login = () => {
       .post("http://localhost:8080/api/auth/login", data)
       .then((response) => {
         localStorage.setItem("token", response.data.accessToken);
-        navigate("/layout");
+        // Send user to their role-specific home page
+        const target = getDefaultRouteForRole();
+        navigate(target);
       })
       .catch(() => alert("Invalid username or password"));
   };
