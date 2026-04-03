@@ -1,9 +1,9 @@
 import React from "react";
 import { Navigate } from "react-router-dom";
-import { isAuthenticated } from "../../utils/auth";
+import { getUserRole } from "../../utils/auth";
 
 const PrivateRoute = ({ children }) => {
-  const authenticated = isAuthenticated();
+  const authenticated = getUserRole();
 
   if (!authenticated) {
     // Redirect to login if not authenticated
@@ -14,5 +14,3 @@ const PrivateRoute = ({ children }) => {
 };
 
 export default PrivateRoute;
-
-

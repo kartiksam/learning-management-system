@@ -19,6 +19,7 @@ import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
 import RoleBasedRoute from "./components/PrivateRoute/RoleBasedRoute";
 import PublicRoute from "./components/PrivateRoute/PublicRoute";
 import VerifyEmail from "./pages/VerifyEmail";
+import OAuthSuccess from "./components/Login/OAuthSuccess";
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
       <Routes>
         {/* Public routes - accessible without authentication */}
         <Route path="/" element={<HomePage />} />
+        <Route path="/oauth-success" element={<OAuthSuccess />} />
         <Route
           path="/register"
           element={
