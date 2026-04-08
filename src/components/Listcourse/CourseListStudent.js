@@ -35,7 +35,7 @@ function StudentCourses() {
         {},
         {
           headers: { Authorization: `Bearer ${getToken()}` },
-        }
+        },
       )
       .then((response) => {
         alert("Enrolled successfully");
@@ -62,7 +62,7 @@ function StudentCourses() {
       const res = await axios.post(
         `http://localhost:8080/api/payment/create-checkout-session/${courseId}`,
         {},
-        { headers: { Authorization: `Bearer ${token}` } }
+        { headers: { Authorization: `Bearer ${token}` } },
       );
 
       // Validate response has URL
@@ -99,7 +99,7 @@ function StudentCourses() {
       } else if (err.request) {
         // Request was made but no response received
         alert(
-          "Unable to connect to server. Please check your internet connection."
+          "Unable to connect to server. Please check your internet connection.",
         );
       } else {
         // Something else happened
@@ -123,7 +123,7 @@ function StudentCourses() {
             Authorization: `Bearer ${token}`,
             "Content-Type": "multipart/form-data",
           },
-        }
+        },
       );
       alert("Uploaded Successfully");
       setFile(null);
@@ -141,7 +141,7 @@ function StudentCourses() {
         `http://localhost:8080/api/materials/course/${courseId}`,
         {
           headers: { Authorization: `Bearer ${token}` },
-        }
+        },
       );
       console.log("Materials response:", res.data); // ✅ Debug log
       setMaterials(res.data);
