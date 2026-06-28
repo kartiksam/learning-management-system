@@ -9,6 +9,7 @@ function StudentCourses() {
   const [selectedCourseId, setSelectedCourseId] = useState(null); // For upload/view
   const [file, setFile] = useState(null);
   const [type, setType] = useState("VIDEO");
+  const [selectedMaterial, setSelectedMaterial] = useState(null);
   const [materials, setMaterials] = useState([]);
   const role = getUserRole();
 
@@ -42,7 +43,14 @@ function StudentCourses() {
 
         navigate("/enrolled-courses");
       })
-      .catch((error) => console.error(error));
+      .catch((error) => {
+        console.error(error);
+        if (error.response) {
+          alert(error.response.data);
+        } else {
+          alert("Something went wrong");
+        }
+      });
   };
 
   const purchaseCourse = async (courseId) => {
@@ -135,22 +143,47 @@ function StudentCourses() {
 
   const handleViewMaterials = async (courseId) => {
     const token = getToken();
+
     try {
-      console.log("Fetching materials for course ID:", courseId); // ✅ Debug log
       const res = await axios.get(
         `http://localhost:8080/api/materials/course/${courseId}`,
         {
-          headers: { Authorization: `Bearer ${token}` },
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
         },
       );
-      console.log("Materials response:", res.data); // ✅ Debug log
+
       setMaterials(res.data);
       setSelectedCourseId(courseId);
+
+      if (res.data.length > 0) {
+        setSelectedMaterial(res.data[0]);
+      }
     } catch (error) {
-      console.error("Error fetching materials:", error);
-      alert("Failed to load materials. Please try again.");
+      console.error(error);
+      alert("Please Purchase Course First");
     }
   };
+
+  // const handleViewMaterials = async (courseId) => {
+  //   const token = getToken();
+  //   try {
+  //     console.log("Fetching materials for course ID:", courseId); // ✅ Debug log
+  //     const res = await axios.get(
+  //       `http://localhost:8080/api/materials/course/${courseId}`,
+  //       {
+  //         headers: { Authorization: `Bearer ${token}` },
+  //       },
+  //     );
+  //     console.log("Materials response:", res.data); // ✅ Debug log
+  //     setMaterials(res.data);
+  //     setSelectedCourseId(courseId);
+  //   } catch (error) {
+  //     console.error("Error fetching materials:", error);
+  //     alert(" Please Purchase Course first.");
+  //   }
+  // };
 
   return (
     <div className="course-list-container">
@@ -217,40 +250,51 @@ function StudentCourses() {
 
             {/* Show materials list only for selected course */}
             {selectedCourseId === course.id && (
-              <div className="materials-display">
-                <h4>📚 Course Materials</h4>
-                {materials.length > 0 ? (
-                  materials.map((mat) => (
-                    <div key={mat.id} className="material-item">
-                      <p>
-                        <strong>{mat.fileName}</strong>
-                      </p>
-                      {mat.fileType === "VIDEO" ? (
-                        <video controls width="320" height="240">
+              <div className="course-player-layout">
+                {/* LEFT SIDE PLAYER */}
+                <div className="video-section">
+                  {selectedMaterial ? (
+                    <>
+                      <h4>{selectedMaterial.fileName}</h4>
+
+                      {selectedMaterial.fileType === "VIDEO" ? (
+                        <video controls width="100%">
                           <source
-                            src={`http://localhost:8080/${mat.filePath}`}
+                            src={selectedMaterial.filePath}
                             type="video/mp4"
                           />
-                          Your browser does not support the video tag.
+                          Your browser does not support video playback.
                         </video>
                       ) : (
-                        <a
-                          href={`http://localhost:8080/${mat.filePath}`}
-                          target="_blank"
-                          rel="noreferrer"
-                          download
-                          className="download-link"
-                        >
-                          📄 Download PDF
-                        </a>
+                        <iframe
+                          src={selectedMaterial.fileUrl}
+                          width="100%"
+                          height="600"
+                          title={selectedMaterial.fileName}
+                        />
                       )}
+                    </>
+                  ) : (
+                    <p>No material selected</p>
+                  )}
+                </div>
+
+                {/* RIGHT SIDE MATERIAL LIST */}
+                <div className="materials-sidebar">
+                  <h4>Course Content</h4>
+
+                  {materials.map((mat) => (
+                    <div
+                      key={mat.id}
+                      className={`lesson-item ${
+                        selectedMaterial?.id === mat.id ? "active" : ""
+                      }`}
+                      onClick={() => setSelectedMaterial(mat)}
+                    >
+                      {mat.fileType === "VIDEO" ? "🎥" : "📄"} {mat.fileName}
                     </div>
-                  ))
-                ) : (
-                  <div className="no-materials">
-                    <p>📭 No materials available for this course yet.</p>
-                  </div>
-                )}
+                  ))}
+                </div>
               </div>
             )}
           </div>
