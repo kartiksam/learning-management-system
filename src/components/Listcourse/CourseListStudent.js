@@ -107,6 +107,7 @@ function StudentCourses() {
       } else if (err.request) {
         // Request was made but no response received
         alert(
+          console.log(err.request),
           "Unable to connect to server. Please check your internet connection.",
         );
       } else {
@@ -258,12 +259,21 @@ function StudentCourses() {
                       <h4>{selectedMaterial.fileName}</h4>
 
                       {selectedMaterial.fileType === "VIDEO" ? (
-                        <video controls width="100%">
-                          <source
-                            src={selectedMaterial.filePath}
-                            type="video/mp4"
-                          />
-                          Your browser does not support video playback.
+                        // <video controls width="100%">
+                        //   <source
+                        //     src={selectedMaterial.fileUrl}
+                        //     // type="video/mp4"
+                        //     // "video/x-matroska"
+                        //     type="video/x-matroska"
+                        //   />
+                        //   Your browser does not support video playback.
+                        // </video>
+                        <video
+                          controls
+                          width="100%"
+                          src={selectedMaterial.fileUrl}
+                        >
+                          Your browser does not support the video tag.
                         </video>
                       ) : (
                         <iframe
