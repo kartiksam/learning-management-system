@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { Link, Outlet, useNavigate } from "react-router-dom";
 import "./MainLayout.css";
 import { getDecodedToken, getUserRole } from "../utils/auth";
+import AITutorWidget from "../components/Ai/AITutorWidget";
 
 const MainLayout = () => {
   const navigate = useNavigate();
@@ -76,6 +77,8 @@ const MainLayout = () => {
       <main>
         <Outlet />
       </main>
+      {/* Global AI Tutor — available on all authenticated routes */}
+      <AITutorWidget />
     </>
   );
 };
